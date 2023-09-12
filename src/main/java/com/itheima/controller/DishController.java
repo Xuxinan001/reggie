@@ -75,7 +75,6 @@ public class DishController {
     @PutMapping
     public R<String> update(@RequestBody DishDto dishDto){
         dishService.updateWithFlavor(dishDto);
-
         String key = "dish_"+dishDto.getCategoryId()+"_1";
         redisTemplate.delete(key);
         return  R.success("新增菜品成功");
